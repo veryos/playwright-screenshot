@@ -2,11 +2,17 @@
 
 > `npx skills add veryos/playwright-screenshot`
 
-Replace wkhtmltoimage with Playwright at **deviceScaleFactor=5** for crystal-clear Chinese text. Born from real-world testing — DPR=5 renders at 1950px then scales down for 4× oversampling.
+Replace wkhtmltoimage with Playwright at **deviceScaleFactor=5** for crystal-clear Chinese text. DPR=5 renders at 1950px then scales down — 4× oversampling for razor-sharp type at any resolution.
 
-![DPR=1 vs DPR=5 comparison](assets/dpr-comparison.png)
+![DPR toggle](assets/dpr-toggle.gif)
 
-*Left: DPR=1 (125KB, wkhtmltoimage level). Right: DPR=5 (716KB, 4× oversampling). Same HTML, same 390px width, same Microsoft YaHei font.*
+*Same HTML, same 390px width, same Microsoft YaHei font. DPR=1 (125KB) ↔ DPR=5 (716KB).*
+
+### Zoom detail
+
+![Zoom comparison](assets/dpr-zoom-compare.png)
+
+*3× zoom on headline text. DPR=5 renders each Chinese character at ~65 pixels — no stroke collapse, no aliasing.*
 
 ## Quick Start
 
@@ -36,31 +42,29 @@ img = img.resize((390, int(img.height * 390 / img.width)), Image.LANCZOS)
 img.save("output.png", quality=95)
 ```
 
-## DPR Selection Guide
+## DPR Selection
 
-| DPR | Render width (390px card) | File size | Use case |
-|-----|--------------------------|-----------|----------|
-| 1 | 390px | ~125KB | Debug only |
-| 2 | 780px | ~270KB | Quick preview |
-| 3 | 1170px | ~420KB | Daily use |
-| **5** | **1950px** | **~700KB** | **Production (default)** |
+| DPR | Render width | File | Use |
+|-----|-------------|------|-----|
+| 1 | 390px | 125KB | Debug |
+| 2 | 780px | 270KB | Preview |
+| 3 | 1170px | 420KB | Daily |
+| **5** | **1950px** | **700KB** | **Production** |
 
 ## Migration from wkhtmltoimage
 
-| wkhtmltoimage (deprecated) | Playwright (this skill) |
+| wkhtmltoimage | Playwright |
 |---|---|
-| `--width 390 --quality 95` | `viewport={"width": 390}` + `quality=95` |
-| QtWebKit engine | Chromium Skia |
-| ❌ No DPR support | ✅ `device_scale_factor=5` |
+| `--width 390 --quality 95` | `viewport=390` + `quality=95` |
+| QtWebKit | Chromium Skia |
+| ❌ No DPR | ✅ `device_scale_factor=5` |
 
-## Fonts for Chinese
+## Fonts
 
 ```css
 body { font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif; }
 h1   { font-family: 'SimHei', sans-serif; }
 ```
-
-Sans-serif fonts outperform serif fonts at small sizes on low-DPI displays.
 
 ## License
 

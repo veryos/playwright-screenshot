@@ -2,11 +2,15 @@
 
 > `npx skills add veryos/playwright-screenshot`
 
-用 Playwright **DPR=5** 替代 wkhtmltoimage。390px 移动端卡片，每个汉字从 13 像素跃升到 65 像素渲染——4 倍超采样，字体锐利清澈。
+用 Playwright **DPR=5** 替代 wkhtmltoimage。同一 HTML，同一 390px——DPR=5 以 1950px 渲染后缩放，中文笔画锐利不粘连。
 
-![DPR对比](assets/dpr-comparison.png)
+![DPR=1](assets/dpr-1.png)
 
-*左：DPR=1（125KB）。右：DPR=5（716KB，4 倍超采样）。同一 HTML，同一 390px 宽度，同一微软雅黑字体。*
+*DPR=1 · 125KB · wkhtmltoimage 级别*
+
+![DPR=5](assets/dpr-5.png)
+
+*DPR=5 · 716KB · 4 倍超采样*
 
 ## 快速开始
 
@@ -38,22 +42,22 @@ img.save("output.png", quality=95)
 
 ## DPR 选择
 
-| DPR | 390px 渲染宽度 | 文件 | 场景 |
-|-----|-------------|------|------|
-| 1 | 390px | 125KB | 调试对比 |
-| 2 | 780px | 270KB | 快速预览 |
+| DPR | 渲染宽度 | 文件 | 场景 |
+|-----|---------|------|------|
+| 1 | 390px | 125KB | 调试 |
+| 2 | 780px | 270KB | 预览 |
 | 3 | 1170px | 420KB | 日常 |
-| **5** | **1950px** | **700KB** | **正式发布（默认）** |
+| **5** | **1950px** | **700KB** | **正式** |
 
 ## 从 wkhtmltoimage 迁移
 
 | wkhtmltoimage | Playwright |
 |---|---|
 | `--width 390 --quality 95` | `viewport=390` + `quality=95` |
-| QtWebKit 引擎 | Chromium Skia |
+| QtWebKit | Chromium Skia |
 | ❌ 无 DPR | ✅ `device_scale_factor=5` |
 
-## 中文推荐字体
+## 字体
 
 ```css
 body { font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif; }

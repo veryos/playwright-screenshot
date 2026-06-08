@@ -2,17 +2,15 @@
 
 > `npx skills add veryos/playwright-screenshot`
 
-Replace wkhtmltoimage with Playwright at **deviceScaleFactor=5** for crystal-clear Chinese text. DPR=5 renders at 1950px then scales down — 4× oversampling for razor-sharp type at any resolution.
+Replace wkhtmltoimage with Playwright at **deviceScaleFactor=5**. Same HTML, same 390px — DPR=5 renders at 1950px then scales down for sharp Chinese text.
 
-![DPR toggle](assets/dpr-toggle.gif)
+![DPR=1](assets/dpr-1.png)
 
-*Same HTML, same 390px width, same Microsoft YaHei font. DPR=1 (125KB) ↔ DPR=5 (716KB).*
+*DPR=1 — 125KB, wkhtmltoimage level*
 
-### Zoom detail
+![DPR=5](assets/dpr-5.png)
 
-![Zoom comparison](assets/dpr-zoom-compare.png)
-
-*3× zoom on headline text. DPR=5 renders each Chinese character at ~65 pixels — no stroke collapse, no aliasing.*
+*DPR=5 — 716KB, 4× oversampling*
 
 ## Quick Start
 

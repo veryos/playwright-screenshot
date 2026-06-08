@@ -2,15 +2,15 @@
 
 > `npx skills add veryos/playwright-screenshot`
 
-Replace wkhtmltoimage with Playwright at **deviceScaleFactor=5**. Same HTML, same 390px — DPR=5 renders at 1950px then scales down for sharp Chinese text.
+Replace wkhtmltoimage with Playwright at **deviceScaleFactor=5**. Same HTML, same width — DPR=5 renders at 5× resolution then scales down for sharp text at any size.
 
-![DPR=1](assets/dpr-1.png)
+**DPR=1** — wkhtmltoimage level, 128KB
 
-*DPR=1 — 125KB, wkhtmltoimage level*
+<img src="assets/dpr-1.png" width="100%" alt="DPR=1">
 
-![DPR=5](assets/dpr-5.png)
+**DPR=5** — 4× oversampling, 221KB
 
-*DPR=5 — 716KB, 4× oversampling*
+<img src="assets/dpr-5.png" width="100%" alt="DPR=5">
 
 ## Quick Start
 

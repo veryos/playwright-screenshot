@@ -2,15 +2,15 @@
 
 > `npx skills add veryos/playwright-screenshot`
 
-用 Playwright **DPR=5** 替代 wkhtmltoimage。同一 HTML，同一 390px——DPR=5 以 1950px 渲染后缩放，中文笔画锐利不粘连。
+用 Playwright **DPR=5** 替代 wkhtmltoimage。同一 HTML，同一宽度——DPR=5 以 5 倍分辨率渲染后缩放，中文字体锐利不粘连。
 
-![DPR=1](assets/dpr-1.png)
+**DPR=1** · wkhtmltoimage 级别 · 128KB
 
-*DPR=1 · 125KB · wkhtmltoimage 级别*
+<img src="assets/dpr-1.png" width="100%" alt="DPR=1">
 
-![DPR=5](assets/dpr-5.png)
+**DPR=5** · 4 倍超采样 · 221KB
 
-*DPR=5 · 716KB · 4 倍超采样*
+<img src="assets/dpr-5.png" width="100%" alt="DPR=5">
 
 ## 快速开始
 

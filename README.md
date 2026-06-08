@@ -4,15 +4,15 @@
 
 Replace wkhtmltoimage with Playwright at **deviceScaleFactor=5**.
 
-**DPR=1** — 128KB, wkhtmltoimage level
+**DPR=1** — 122KB, wkhtmltoimage level
 
 ![](assets/dpr-1.png)
 
-**DPR=5** — 221KB, 4× oversampling
+**DPR=5** — 212KB, 4× oversampling
 
 ![](assets/dpr-5.png)
 
-Same HTML, same 780px width, same Microsoft YaHei font.
+390px mobile card, same HTML, Microsoft YaHei. DPR=5 renders at 1950px → downscale → crisp.
 
 ## Quick Start
 
@@ -40,30 +40,6 @@ with sync_playwright() as p:
 img = Image.open("output.png")
 img = img.resize((390, int(img.height * 390 / img.width)), Image.LANCZOS)
 img.save("output.png", quality=95)
-```
-
-## DPR Selection
-
-| DPR | Render width | File | Use |
-|-----|-------------|------|-----|
-| 1 | 390px | 125KB | Debug |
-| 2 | 780px | 270KB | Preview |
-| 3 | 1170px | 420KB | Daily |
-| **5** | **1950px** | **700KB** | **Production** |
-
-## Migration from wkhtmltoimage
-
-| wkhtmltoimage | Playwright |
-|---|---|
-| `--width 390 --quality 95` | `viewport=390` + `quality=95` |
-| QtWebKit | Chromium Skia |
-| ❌ No DPR | ✅ `device_scale_factor=5` |
-
-## Fonts
-
-```css
-body { font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif; }
-h1   { font-family: 'SimHei', sans-serif; }
 ```
 
 ## License

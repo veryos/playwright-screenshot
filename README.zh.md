@@ -4,21 +4,15 @@
 
 用 Playwright **DPR=5** 替代 wkhtmltoimage。
 
-**DPR=1** · 128KB · wkhtmltoimage 级别
+**DPR=1** · 122KB
 
 ![](assets/dpr-1.png)
 
-**DPR=5** · 221KB · 4 倍超采样
+**DPR=5** · 212KB · 4 倍超采样
 
 ![](assets/dpr-5.png)
 
-## 快速开始
-
-```bash
-npx skills add veryos/playwright-screenshot
-pip install playwright pillow
-python -m playwright install chromium
-```
+390px 移动端卡片，DPR=5 以 1950px 渲染后缩放，字体锐利。
 
 ## License
 

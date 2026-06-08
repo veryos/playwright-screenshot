@@ -4,15 +4,15 @@
 
 Replace wkhtmltoimage with Playwright at **deviceScaleFactor=5**.
 
-**DPR=1** — 122KB, wkhtmltoimage level
+<table><tr>
+<td width="50%"><b>DPR=1</b> · 122KB</td>
+<td width="50%"><b>DPR=5</b> · 212KB · 4× oversampling</td>
+</tr><tr>
+<td><img src="assets/dpr-1.png" width="100%"></td>
+<td><img src="assets/dpr-5.png" width="100%"></td>
+</tr></table>
 
-![](assets/dpr-1.png)
-
-**DPR=5** — 212KB, 4× oversampling
-
-![](assets/dpr-5.png)
-
-390px mobile card, same HTML, Microsoft YaHei. DPR=5 renders at 1950px → downscale → crisp.
+390px mobile card, Microsoft YaHei. DPR=5 renders at 1950px → downscale → crisp.
 
 ## Quick Start
 

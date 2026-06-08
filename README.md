@@ -2,15 +2,17 @@
 
 > `npx skills add veryos/playwright-screenshot`
 
-Replace wkhtmltoimage with Playwright at **deviceScaleFactor=5**. Same HTML, same width — DPR=5 renders at 5× resolution then scales down for sharp text at any size.
+Replace wkhtmltoimage with Playwright at **deviceScaleFactor=5**.
 
-**DPR=1** — wkhtmltoimage level, 128KB
+**DPR=1** — 128KB, wkhtmltoimage level
 
-<img src="assets/dpr-1.png" width="100%" alt="DPR=1">
+![](assets/dpr-1.png)
 
-**DPR=5** — 4× oversampling, 221KB
+**DPR=5** — 221KB, 4× oversampling
 
-<img src="assets/dpr-5.png" width="100%" alt="DPR=5">
+![](assets/dpr-5.png)
+
+Same HTML, same 780px width, same Microsoft YaHei font.
 
 ## Quick Start
 
